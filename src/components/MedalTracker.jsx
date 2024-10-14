@@ -82,9 +82,14 @@ const MedalTracker = () => {
         <div className="grid">
           {userData.map(function (item) {
             return (
-              <li key={item.nation}>
-                {item.goldMedal},{item.silverMedal},{item.bronzeMedal}
-              </li>
+              <table key={item.nation}>
+                <tr>
+                  <td>{item.nation}</td>
+                  <td>{item.goldMedal}</td>
+                  <td>{item.silverMedal}</td>
+                  <td>{item.bronzeMedal}</td>
+                </tr>
+              </table>
             );
           })}
         </div>

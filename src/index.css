@@ -11,12 +11,3 @@
   font-size: 4rem;
   margin: 3rem 0 3rem 0;
 }
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
-  border: 5px solid blue;
-  width: 50%;
-  margin: 0 auto;
-}
