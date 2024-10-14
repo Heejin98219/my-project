@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: 0;
+}
+
+.title {
+  font-weight: bold;
+  text-align: center;
+  font-size: 4rem;
+  margin: 3rem 0 3rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  border: 5px solid blue;
+  width: 50%;
+  margin: 0 auto;
+}
