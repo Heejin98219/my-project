@@ -111,7 +111,7 @@ const MedalTracker = () => {
               onChange={(e) => BronzeMedalHandleInputChange(e)}
             ></input>
             <button onClick={(e) => handleClick(e)}>추가</button>
-            <button onClick={(e) => handleUpdateNation()}>수정</button>
+            <button onClick={() => handleUpdateNation()}>수정</button>
           </div>
         </div>
         {/* 값*/}
