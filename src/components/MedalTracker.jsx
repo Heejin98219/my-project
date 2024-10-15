@@ -39,6 +39,13 @@ const MedalTracker = () => {
     });
   };
 
+  // 삭제 버튼 click 함수
+  const handleDeleteNation = (name) => {
+    const filteredData = userData.filter((item) => item.nation !== name);
+    // console.log(filteredData);
+    setUserData(filteredData);
+  };
+
   return (
     <div>
       <>
@@ -87,7 +94,12 @@ const MedalTracker = () => {
                   <td>{item.nation}</td>
                   <td>{item.goldMedal}</td>
                   <td>{item.silverMedal}</td>
-                  <td>{item.bronzeMedal}</td>
+                  <td>
+                    {item.bronzeMedal}
+                    <button onClick={() => handleDeleteNation(item.nation)}>
+                      삭제
+                    </button>
+                  </td>
                 </tr>
               </table>
             );
