@@ -2,9 +2,13 @@ import { useState } from "react";
 
 /* 국가명, 금/ 은/ 동메달 넣을 훅*/
 const MedalTracker = () => {
+  // 국가명
   const [nation, setNation] = useState("");
+  // 금메달 수
   const [goldMedal, setGoldMedal] = useState(0);
+  // 은메달 수
   const [silverMedal, setSilverMedal] = useState(0);
+  // 동메달 수
   const [bronzeMedal, setBronzeMedal] = useState(0);
 
   /* 사용자가 입력한 각 메달 수 넣을 배열 */
@@ -17,6 +21,11 @@ const MedalTracker = () => {
 
   // 금메달 onChange 함수
   const goldMedalHandleInputChange = (e) => {
+    const regexNumber = /[^0-9]/gi; // 숫자
+    if (goldMedal === regexNumber) {
+      alert("숫자만 입력 가능합니다.");
+      return;
+    }
     setGoldMedal(e.target.value);
   };
 
@@ -46,11 +55,6 @@ const MedalTracker = () => {
     // nation 값이 일치하지 않는 항목들만 남긴 새로운 배열을 만듦
     setUserData(filteredData);
   };
-  // name: 삭제하려는 특정 국가명
-  // userData: 여러 국가와 + 국가의 메달 정보 (→ 행)
-  // filter(): 조건에 맞는 항목들만 배열로 반환
-  // 클릭한 국가 + 동일한 국가만 배열에서 삭제
-  // 나머지는 그대로 남아있음
 
   // 수정 버튼 click 함수
   // nation 값이 현재 입력된 국가명과 일치하는 항목을 찾음
@@ -78,61 +82,85 @@ const MedalTracker = () => {
   return (
     <div>
       <>
-        <div
-          style={{
-            border: "1px solid red",
-          }}
-        >
+        <div>
+          {/* 최상단 제목 */}
           <h1 className="title">올림픽 메달 트레커</h1>
           <br />
           <div className="tracker-container">
-            <label>국가명</label>
-            <input
-              type="text"
-              value={nation}
-              onChange={(e) => nationHandleInputChange(e)}
-            ></input>
-            <label>금메달</label>
-            <input
-              type="text"
-              value={goldMedal}
-              onChange={(e) => goldMedalHandleInputChange(e)}
-            ></input>
-            <label>은메달</label>
-            <input
-              type="text"
-              value={silverMedal}
-              onChange={(e) => silverMedalHandleInputChange(e)}
-            ></input>
-            <label>동메달</label>
-            <input
-              type="text"
-              value={bronzeMedal}
-              onChange={(e) => BronzeMedalHandleInputChange(e)}
-            ></input>
+            {/* 국가명 */}
+            <div className="inputItem">
+              <label>국가명</label>
+              <input
+                type="text"
+                value={nation}
+                onChange={(e) => nationHandleInputChange(e)}
+              ></input>
+            </div>
+            {/* 금메달 */}
+            <div className="inputItem">
+              <label>금메달</label>
+              <input
+                type="text"
+                value={goldMedal}
+                onChange={(e) => goldMedalHandleInputChange(e)}
+              ></input>
+            </div>
+            {/* 은메달 */}
+            <div className="inputItem">
+              <label>은메달</label>
+              <input
+                type="text"
+                value={silverMedal}
+                onChange={(e) => silverMedalHandleInputChange(e)}
+              ></input>
+            </div>
+            {/* 동메달 */}
+            <div className="inputItem">
+              <label>동메달</label>
+              <input
+                type="text"
+                value={bronzeMedal}
+                onChange={(e) => BronzeMedalHandleInputChange(e)}
+              ></input>
+            </div>
+            {/* 추가 버튼 */}
             <button onClick={(e) => handleClick(e)}>추가</button>
-            <button onClick={() => handleUpdateNation()}>수정</button>
+            {/* 수정 버튼 */}
+            <button className="updateBtn" onClick={() => handleUpdateNation()}>
+              수정
+            </button>
           </div>
         </div>
-        {/* 값*/}
-        <div className="grid">
-          {userData.map(function (item) {
-            return (
-              <table key={item.nation}>
-                <tr>
-                  <td>{item.nation}</td>
-                  <td>{item.goldMedal}</td>
-                  <td>{item.silverMedal}</td>
-                  <td>
-                    {item.bronzeMedal}
-                    <button onClick={() => handleDeleteNation(item.nation)}>
-                      삭제
-                    </button>
-                  </td>
-                </tr>
-              </table>
-            );
-          })}
+        {/* 데이터 출력 */}
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>국가명</th>
+                <th>금메달</th>
+                <th>은메달</th>
+                <th>동메달</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {userData.map(function (item) {
+                return (
+                  <tr key={item.nation}>
+                    <td>{item.nation}</td>
+                    <td>{item.goldMedal}</td>
+                    <td>{item.silverMedal}</td>
+                    <td>{item.bronzeMedal}</td>
+                    <td>
+                      <button onClick={() => handleDeleteNation(item.nation)}>
+                        삭제
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </>
     </div>

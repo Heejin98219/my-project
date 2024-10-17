@@ -5,9 +5,68 @@
   box-sizing: 0;
 }
 
+/* 최상단 제목 */
 .title {
   font-weight: bold;
   text-align: center;
   font-size: 4rem;
   margin: 3rem 0 3rem 0;
+}
+
+/* 국가명, 메달 tbx,
+추가, 수정 btn */
+div.tracker-container {
+  text-align: center;
+}
+
+/* 라벨, tbx 감싸는 div*/
+.inputItem {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+input {
+  width: 150px;
+  height: 20px;
+  font-size: 15px;
+}
+
+label {
+  font-size: 18px;
+  margin-right: 3px;
+}
+
+button {
+  width: 75px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #ffea98;
+  border: 2px solid dimgrey;
+  border-radius: 7px;
+}
+
+button:hover {
+  font-weight: bold;
+  color: #ffea98;
+  background-color: dimgrey;
+}
+
+/* 수정 btn */
+.updateBtn {
+  margin-left: 15px;
+}
+
+table {
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+table tr {
+  font-size: 21px;
+}
+
+td {
+  text-align: center;
 }
